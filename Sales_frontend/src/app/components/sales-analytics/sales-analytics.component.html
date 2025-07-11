@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <h2>Sales Table Analytics Dashboard</h2>
+  
+    <div class="card mt-4 p-3">
+      <h4>Summary</h4>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Total Sales Amount:</strong> ₹{{ totalSalesAmount | number:'1.2-2' }}
+        </li>
+        <li class="list-group-item">
+          <strong>Total Units Sold:</strong> {{ totalUnitsSold }}
+        </li>
+        <li class="list-group-item">
+          <strong>Average Price per Unit:</strong> ₹{{ averageSalesPrice | number:'1.2-2' }}
+        </li>
+
+      </ul>
+    </div>
+  
+    <div class="mt-5">
+      <h4>Sales Records</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Units Sold</th>
+            <th>Price Per Unit</th>
+            <th>Sales Amount</th>
+            <th>Sales Date</th>
+            <th>City</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sale of salesData">
+            <td>{{ sale.productName }}</td>
+            <td>{{ sale.noOfUnits }}</td>
+            <td>₹{{ sale.pricePerUnit }}</td>
+            <td>₹{{ sale.salesAmount }}</td>
+            <td>{{ sale.salesDate | date:'mediumDate' }}</td>
+            <td>{{ sale.city }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

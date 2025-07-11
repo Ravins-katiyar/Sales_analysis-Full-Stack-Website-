@@ -1,0 +1,76 @@
+<!-- Sales Report Section -->
+<div class="container mt-4">
+    <h1>Welcome to the Sales Management System</h1>
+    <div class="header mb-4">
+      <label for="reportType" class="form-label">Select Report Type:</label>
+      <select id="reportType" class="form-select" [(ngModel)]="selectedReportType" (change)="loadSalesData()">
+        <option value="leadingProductBySalesAmount">Leading Product by Sales Amount</option>
+        <option value="leadingProductByUnitsSold">Leading Product by Units Sold</option>
+        <option value="leadingProductByCity">Leading Product by City</option>
+      </select>
+    </div>
+
+    <!-- Show the corresponding product details table based on selected report type -->
+    <div *ngIf="selectedReportType === 'leadingProductBySalesAmount'">
+      <h3>Leading Product by Sales Amount</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Sales Amount</th>
+            <th>Units Sold</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of leadingProductBySalesAmount | keyvalue">   <!--The keyvalue pipe transforms an object or a Map into an array of key-value pairs, which can then be iterated with *ngFor.-->
+            <td>{{ product.value.productName }}</td>
+            <td>{{ product.value.salesAmount | currency:'INR' }}</td>
+            <td>{{ product.value.noOfUnits }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div *ngIf="selectedReportType === 'leadingProductByUnitsSold'">
+      <h3>Leading Product by Units Sold</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Sales Amount</th>
+            <th>Units Sold</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of leadingProductByUnitsSold | keyvalue">
+            <td>{{ product.value.productName }}</td>
+            <td>{{ product.value.salesAmount | currency:'INR' }}</td>
+            <td>{{ product.value.noOfUnits }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div *ngIf="selectedReportType === 'leadingProductByCity'">
+      <h3>Leading Product by City</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>Product Name</th>
+            <th>Units Sold</th>
+            <th>Sales Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cityData of leadingProductByCity | keyvalue">
+            <td>{{ cityData.value.city }}</td>
+            <td>{{ cityData.value.productName }}</td>
+            <td>{{ cityData.value.noOfUnits }}</td>
+            <td>{{ cityData.value.salesAmount | currency:'INR' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

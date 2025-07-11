@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h3>Graph Controls</h3>
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <label class="form-label">Graph Type:</label>
+      <select class="form-select" [(ngModel)]="selectedGraphType" (change)="updateChart()">
+        <option *ngFor="let type of graphTypes" [value]="type.toLowerCase()">{{ type }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">X-Axis:</label>
+      <select class="form-select" [(ngModel)]="selectedXAxis" (change)="updateChart()">
+        <option *ngFor="let col of columns" [value]="col">{{ col }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Y-Axis:</label>
+      <select class="form-select" [(ngModel)]="selectedYAxis" (change)="updateChart()">
+        <option *ngFor="let col of numericColumns" [value]="col">{{ col }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Highcharts Chart Rendering -->
+  <highcharts-chart 
+    [Highcharts]="Highchart"
+    [options]="chartOptions"
+    style="width: 100%; height: 400px; display: block;">
+  </highcharts-chart>
+</div>

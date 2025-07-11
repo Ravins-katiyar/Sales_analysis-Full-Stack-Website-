@@ -1,0 +1,31 @@
+<div *ngIf="isLoading" class="loading-message">
+    <p>Loading sales data...</p>
+    <!-- You can also use a spinner here if you prefer -->
+</div>
+
+<div *ngIf="!isLoading" class="container mt-4">
+    <h2>Sales Data</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Product Name</th>
+          <th scope="col">Number of Units</th>
+          <th scope="col">Price per Unit</th>
+          <th scope="col">Sales Amount</th>
+          <th scope="col">Sales Date</th>
+          <th scope="col">City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of salesData">
+          <td>{{ sale.productName }}</td>
+          <td>{{ sale.noOfUnits }}</td>
+          <td>{{ sale.pricePerUnit }}</td>
+          <td>{{ sale.salesAmount }}</td>
+          <td>{{ sale.salesDate }}</td>
+          <td>{{ sale.city }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,43 @@
+<div class="container mt-4">
+    <h2>Enter Product Sale Details</h2>
+
+    <div *ngIf="formSubmitted" class="alert alert-success" role="alert">
+      Data successfully submitted!
+    </div>
+    
+    <form [formGroup]="salesForm" (ngSubmit)="onSubmit()">
+  
+      <div class="mb-3">
+        <label for="productName" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="productName" formControlName="productName" placeholder="Enter product name">
+      </div>
+  
+      <div class="mb-3">
+        <label for="noOfUnits" class="form-label">Number of Units</label>
+        <input type="number" class="form-control" id="noOfUnits" formControlName="noOfUnits" placeholder="Enter number of units sold">
+      </div>
+  
+      <div class="mb-3">
+        <label for="pricePerUnit" class="form-label">Price per Unit</label>
+        <input type="number" class="form-control" id="pricePerUnit" formControlName="pricePerUnit" placeholder="Enter price per unit">
+      </div>
+  
+      <div class="mb-3">
+        <label for="salesAmount" class="form-label">Sales Amount (Auto Calculated)</label>
+        <input type="number" class="form-control" id="salesAmount" formControlName="salesAmount" >
+      </div>
+  
+      <div class="mb-3">
+        <label for="salesDate" class="form-label">Sales Date</label>
+        <input type="date" class="form-control" id="salesDate" formControlName="salesDate">
+      </div>
+  
+      <div class="mb-3">
+        <label for="city" class="form-label">City Name</label>
+        <input type="text" class="form-control" id="cityName" formControlName="city" placeholder="Enter full city name">
+      </div>
+  
+      <button type="submit" class="btn btn-success">Submit Sale</button>
+    </form>
+  </div>
+  
